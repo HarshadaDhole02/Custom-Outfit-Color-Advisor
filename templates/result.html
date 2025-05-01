@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Outfit Color Suggestions</title>
+    <style>
+        body{
+            font-family: Arial,sans-serif;
+            text-align: center;
+            background-color: #f7f7f7;
+            padding: 20px;
+        }
+        .container{
+            background:white;
+            border-radius: 10px;
+            padding: 30px;
+            width:60%;
+            margin: auto;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .color-box{
+            width:40px;
+            height:20px;
+            display:inline-block;
+            margin-left: 10px;
+            border : 1px solid #aaa;
+        }
+        .skin-box{
+            width:100px;
+            height : 100px;
+            margin: auto;
+            border-radius: 10px;
+            border: 2px solid #ccc;
+        }
+        img{
+            margin-top: 20px;
+            max-width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Skin Tone:{{tone}}</h1>
+
+        <h3>Your Skin Tone Preview : </h3>
+        <div class = "skin-box" style="background-color: rgb({{r}},{{g}},{{b}});"></div>
+        
+        <h3>Suggested Outfit Colors:</h3>
+        <ul style="list-style: none;padding: 0;">
+            {% for color in colors %}
+                <li>{{color.name}}
+                     <div class="color-box" style="background-color: {{color.hex}};"></div></li>
+            {% endfor%}
+        </ul>
+        
+        <h3>Captured Image:</h3>
+        <img src="{{url_for('static',filename='uploads/captured_image.jpg')}}" alt="Captured Image" width="320">
+    </div>
+</body>
+</html>
